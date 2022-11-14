@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import appConfig from "../../../Utils/AppConfig";
 import "./ProductCard.css";
@@ -17,7 +18,9 @@ function ProductCard(props: ProductCardProps): JSX.Element {
                 stock: {props.product.stock} units
             </div>
             <div>
+                <NavLink to= {"/products/details/" + props.product.id}>
                 <img src={appConfig.productsImageUrl + props.product.imageName} />
+                </NavLink>
             </div>
         </div>
     );
