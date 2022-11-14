@@ -14,6 +14,7 @@ function Home(): JSX.Element {
     function HandleSurvey(surveyReport: string) {
         alert("survey result " + surveyReport);
     }
+    
     return (
         <div className="Home">
 
