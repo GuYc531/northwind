@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
 import ProductCard from "../ProductCard/ProductCard";
@@ -18,6 +19,7 @@ function ProductList(): JSX.Element {
 
     return (
         <div className="ProductList">
+            <NavLink to="/products/new">➕</NavLink>
             {products.map(p => <ProductCard key={p.id}  product ={p} />)}
         </div>
     );
