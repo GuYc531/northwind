@@ -1,12 +1,20 @@
-import { Fragment } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import About from "../../AboutArea/About/About";
 import Home from "../../HomeArea/Home/Home";
 import ProductDetails from "../../ProductArea/ProductDetails/ProductDetails";
 import ProductList from "../../ProductArea/ProductList/ProductList";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import LoadableExport from "react-loadable";
+import Spinner from "../../SharedArea/Spinner/Spinner";
 
 function Routing(): JSX.Element {
+
+    const LazyAbout = LoadableExport({
+        loader: ()=> import("../../AboutArea/About/About"),
+        // loading: () => {return null}
+        loading: Spinner
+    })
+
+
     return (
 
         <>
@@ -15,7 +23,7 @@ function Routing(): JSX.Element {
                 <Route path="/products" element={<ProductList />}/>
                 <Route path="/products/details/:id" element={<ProductDetails/>}/>
 
-                <Route path="/about" element={<About />}/>
+                <Route path="/about" element={<LazyAbout />}/>
                 <Route path="/" element={<Navigate to="/home"/>}/>
                 <Route path="*" element={<PageNotFound/>}/>
 

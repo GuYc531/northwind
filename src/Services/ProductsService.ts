@@ -9,8 +9,19 @@ class ProductsService{
         const products = response.data;
         return products;
     }
-}
 
+
+    public async getOneProduct(id: number): Promise<ProductModel> {
+        const response = await axios.get<ProductModel>(appConfig.productsUrl + id)
+        const product = response.data;
+        return product;
+    }
+    
+}
 const productsService = new ProductsService();
 
 export default productsService;
+
+function getOneProduct(id: any, number: any) {
+    throw new Error("Function not implemented.");
+}

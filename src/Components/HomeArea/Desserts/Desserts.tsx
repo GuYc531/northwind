@@ -1,6 +1,7 @@
 import "./Desserts.css";
 import dessertImage from "../../../Assets/Images/summer-desserts-500x500.jpg";
 import { SyntheticEvent } from "react";
+import notifyService from "../../../Services/NotifyService";
 
 function Desserts(): JSX.Element {
 
@@ -17,7 +18,8 @@ function Desserts(): JSX.Element {
 
     function totalDesserts(args: SyntheticEvent): void {
         console.log(args.target)
-        alert("total Desserts:" + items.length);
+        // alert("total Desserts:" + items.length);
+        notifyService.success("total Desserts:" + items.length);
     }
 
     return (

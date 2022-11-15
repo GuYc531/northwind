@@ -12,7 +12,7 @@ function ProductList(): JSX.Element {
 
         productsService.getAllProducts()
         .then(products => setProducts(products))
-        .catch(err => alert(err.message));
+        .catch(err => alert(err));
     
     }, [])
 
