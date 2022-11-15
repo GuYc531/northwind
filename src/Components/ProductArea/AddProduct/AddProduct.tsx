@@ -15,9 +15,9 @@ function AddProduct(): JSX.Element {
                 <label> Name:</label>
                 <input type="text" {...register("name")}/>
                 <label> Price:</label>
-                <input type="number" step="0.01"/>
+                <input type="number" step="0.01" {...register("price")}/>
                 <label> Stock:</label>
-                <input type="number" />
+                <input type="number" {...register("stock")}/>
 
                 <button>Add</button>
             </form>
