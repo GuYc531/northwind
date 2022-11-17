@@ -1,6 +1,6 @@
 class CredentialsModel {
-	public firstname: string;
-	public lastname: string;
+	public firstName: string;
+	public lastName: string;
 }
 
 export default CredentialsModel;
