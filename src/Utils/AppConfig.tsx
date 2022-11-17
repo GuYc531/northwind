@@ -21,6 +21,7 @@ class ProdConfig extends AppConfig {
     public loginUrl = "http://www.northwind/api/auth/login/";
     public registerUrl = "http://www.northwind/api/auth/register/";
 
+
 }
 
 const appConfig = process.env.NODE_ENV === "development" ? new DevConfig() : new ProdConfig();

@@ -11,6 +11,7 @@ function AuthMenu(): JSX.Element {
     const navigate =  useNavigate();
     useEffect(() => {
         setUser(authstore.getState().user);
+        authstore.subscribe(() => setUser(authstore.getState().user));
     }, []);
 
     function logout(){
