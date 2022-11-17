@@ -42,29 +42,6 @@ export function logoutAction(): AuthAction{
     return {type: AuthActionType.Logout}
 }
 
-export function authReducer (currentState = new AuthState(), action: AuthAction): AuthState{
-    const newState = {...currentState}
-
-    switch(action.type){
-
-        case AuthActionType.Register: // here the payload is token   
-        case AuthActionType.Login: // here the payload is a token
-            newState.token = action.payload;
-            newState.user = jwtDecode<{user: UserModel}>(action.payload).user;
-            localStorage.setItem('token', action.payload);
-            break;
-
-        case AuthActionType.Logout: // here no payload 
-            newState.token = newState.user = null;
-            localStorage.removeItem('token');
-            break;
-
-    }
-    return newState;
-}
-//6 - store
-
-
 //5  - reducer
 export function authReducer (currentState = new AuthState(), action: AuthAction): AuthState{
     const newState = {...currentState}
