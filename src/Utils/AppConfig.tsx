@@ -11,6 +11,7 @@ class DevConfig extends AppConfig {
     public productsImageUrl = "http://localhost:3030/api/products/images/";
     public loginUrl = "http://localhost:3030/api/auth/login/";
     public registerUrl = "http://localhost:3030/api/auth/register/";
+
 }
 
 class ProdConfig extends AppConfig {
