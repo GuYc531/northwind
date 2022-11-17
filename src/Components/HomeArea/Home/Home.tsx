@@ -2,6 +2,7 @@ import BestSeller from "../BestSeller/BestSeller";
 import Clock from "../Clock/Clock";
 import Desserts from "../Desserts/Desserts";
 import Discount from "../Discount/Discount";
+import Facebook from "../Facebook/Facebook";
 import Sale from "../Sale/Sale";
 import Search from "../Search/Search";
 import Survey from "../Survey/Survey";
@@ -34,6 +35,7 @@ function Home(): JSX.Element {
             <Search />
             <Clock />
             <Wishlist />
+            <Facebook />
         </div>
     );
 }

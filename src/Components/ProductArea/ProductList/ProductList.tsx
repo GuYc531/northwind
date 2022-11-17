@@ -21,6 +21,7 @@ function ProductList(): JSX.Element {
         <div className="ProductList">
             <NavLink to="/products/new">➕</NavLink>
             {products.map(p => <ProductCard key={p.id}  product ={p} />)}
+            
         </div>
     );
 }

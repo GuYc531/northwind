@@ -18,9 +18,21 @@ class ProductsService{
     }
     
     public async addProduct(product: ProductModel): Promise<void> {
-        const response = await axios.post<ProductModel>(appConfig.productsUrl, product);
+        const headers ={
+            "Content-Type": "multipart/form-data"
+        };
+        const response = await axios.post<ProductModel>(appConfig.productsUrl, product,{headers});
         const addedProduct  =  response.data;
-        // console.log(addedProduct);
+    }
+
+    public async updateProduct(product: ProductModel): Promise<void> {
+        const headers ={"Content-Type": "multipart/form-data"};
+        const response = await axios.put<ProductModel>(appConfig.productsUrl+ product.id, product,{headers});
+        const updatedProduct  =  response.data;
+    }
+
+    public async deleteProduct(id: number): Promise<void>{
+        await axios.delete(appConfig.productsUrl +id);
     }
 
 }
@@ -28,6 +40,7 @@ const productsService = new ProductsService();
 
 export default productsService;
 
-function getOneProduct(id: any, number: any) {
-    throw new Error("Function not implemented.");
-}
+// function getOneProduct(id: any, number: any) {
+//     throw new Error("Function not implemented.");
+
+
