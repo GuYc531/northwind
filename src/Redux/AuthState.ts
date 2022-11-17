@@ -7,6 +7,14 @@ import jwtDecode from "jwt-decode";
 export class AuthState {
     public token: string;
     public user: UserModel = null;
+
+    public constructor(){
+        this.token = localStorage.getItem("token");
+        if(this.token){
+            this.user = jwtDecode<{user: UserModel}>(this.token).user;
+
+        }
+    }
 }
 //2  - actiontype
 export enum AuthActionType {
@@ -41,11 +49,12 @@ export function authReducer (currentState = new AuthState(), action: AuthAction)
         case AuthActionType.Login: // here the payload is a token
             newState.token = action.payload;
             newState.user = jwtDecode<{user: UserModel}>(action.payload).user;
+            localStorage.setItem('token', action.payload);
             break;
 
         case AuthActionType.Logout: // here no payload 
             newState.token = newState.user = null;
-        
+            localStorage.removeItem('token');
             break;
 
     }
