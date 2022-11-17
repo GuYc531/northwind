@@ -4,6 +4,7 @@ import ProductModel from "../../../Models/ProductModel";
 import notifyService from "../../../Services/NotifyService";
 import productsService from "../../../Services/ProductsService";
 import appConfig from "../../../Utils/AppConfig";
+import Spinner from "../../SharedArea/Spinner/Spinner";
 import ProductCard from "../ProductCard/ProductCard";
 import "./ProductDetails.css";
 
@@ -37,6 +38,10 @@ function ProductDetails(): JSX.Element {
 
     return (
         <div className="ProductDetails">
+
+            {!product && <Spinner />}
+            {product &&   
+            <>
             <h3>Name: {product?.name}</h3>
             <h3>Price: ${product?.price}</h3>
             <h3>stock: {product?.stock}</h3>
@@ -47,6 +52,8 @@ function ProductDetails(): JSX.Element {
             <NavLink to={"/products/edit/" + product?.id}>Edit</NavLink> 
             <span>   ||  </span>
             <NavLink to="/#" onClick={deleteProduct}>Delete</NavLink> 
+            </>
+            }   
        </div>
     );
 }

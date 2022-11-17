@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DayPartIcon from "../../SharedArea/DayPartIcon/DayPartIcon";
 import "./Clock.css";
 
 function Clock(): JSX.Element {
@@ -20,6 +21,7 @@ function Clock(): JSX.Element {
     return (
         <div className="Clock">
 			<span>{time}</span>
+            <DayPartIcon hour={new Date().getHours()} />
         </div>
     );
 }

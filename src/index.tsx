@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import Layout from './Components/LayoutArea/Layout/Layout';
 import { BrowserRouter } from 'react-router-dom';
 import InterceptorService from './Services/InterceptorService';
+import { Provider } from 'react-redux';
+import { ProductsStore } from './Redux/ProductsState';
 
 InterceptorService.createInterceptor();
 
@@ -13,7 +15,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <BrowserRouter>
-        <Layout />
+    <Provider store={ProductsStore}>
+    <Layout />
+    </Provider>
+        
     </BrowserRouter>
 
 );
