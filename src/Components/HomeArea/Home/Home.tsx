@@ -35,7 +35,7 @@ function Home(): JSX.Element {
             <Survey HandleSurvey={HandleSurvey} question="How is our services?"/>
 
             <BestSeller />
-
+            
             <Tune />
             <Search />
             <Clock />
