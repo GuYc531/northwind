@@ -1,4 +1,6 @@
 import axios from "axios";
+import { authstore } from "../Redux/AuthState";
+import authService from "./AuthService";
 
 class InterceptorService {
     
@@ -18,6 +20,14 @@ class InterceptorService {
             return response;
         });
 
+        axios.interceptors.request.use(request => {
+            if(authService.isLoggedIn()) { 
+                request.headers = {
+                    authorization:"Bearer " + authstore.getState().token
+                }
+            }
+            return request;
+        })
     }
 }
 

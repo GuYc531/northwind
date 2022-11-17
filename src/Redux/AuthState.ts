@@ -37,7 +37,7 @@ export function loginAction(token: string): AuthAction{
 }
 
 export function logoutAction(): AuthAction{
-    return {type: AuthActionType.Login}
+    return {type: AuthActionType.Logout}
 }
 
 export function authReducer (currentState = new AuthState(), action: AuthAction): AuthState{

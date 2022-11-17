@@ -11,7 +11,8 @@ function AuthMenu(): JSX.Element {
     const navigate =  useNavigate();
     useEffect(() => {
         setUser(authstore.getState().user);
-        authstore.subscribe(() => setUser(authstore.getState().user));
+        const unsubscribe = authstore.subscribe(() => setUser(authstore.getState().user));
+        return () => unsubscribe();
     }, []);
 
     function logout(){
@@ -23,7 +24,7 @@ function AuthMenu(): JSX.Element {
             <div className="AuthMenu">
                 <span>Hello {user.firstName} {user.lastName}</span>
                 <span> || </span>
-                <NavLink to="#"> Logout </NavLink>
+                <NavLink to="/home" onClick={logout}> Logout </NavLink>
             </div>
         )
     }
