@@ -7,6 +7,8 @@ import LoadableExport from "react-loadable";
 import Spinner from "../../SharedArea/Spinner/Spinner";
 import AddProduct from "../../ProductArea/AddProduct/AddProduct";
 import EditProduct from "../../ProductArea/EditProduct/EditProduct";
+import Register from "../../AuthArea/Register/Register";
+import Login from "../../AuthArea/Login/Login";
 
 function Routing(): JSX.Element {
 
@@ -21,6 +23,9 @@ function Routing(): JSX.Element {
 
         <>
             <Routes>
+                <Route path="/register" element={<Register />}/>
+                <Route path="/login" element={<Login />}/>
+
                 <Route path="/home" element={<Home />}/>
                 <Route path="/products" element={<ProductList />}/>
                 <Route path="/products/details/:id" element={<ProductDetails/>}/>

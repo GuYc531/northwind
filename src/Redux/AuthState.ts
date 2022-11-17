@@ -1,5 +1,6 @@
 import UserModel from "../Models/UserModel";
-
+import jwtDecode from "jwt-decode";
+import { createStore } from "redux";
 
 //1 - state
 export class AuthState {
@@ -27,9 +28,29 @@ export function loginAction(token: string): AuthAction{
 }
 
 export function logoutAction(): AuthAction{
-    return {type: AuthActionType.Login}
+    return {type: AuthActionType.Logout}
 }
 
 //5  - reducer
+export function authReducer (currentState = new AuthState(), action: AuthAction): AuthState{
+    const newState = {...currentState}
 
+    switch(action.type){
+
+        case AuthActionType.Register: // here the payload is token   
+        case AuthActionType.Login: // here the payload is a token
+            newState.token = action.payload;
+            newState.user = jwtDecode<{user: UserModel}>(action.payload).user;
+            break;
+
+        case AuthActionType.Logout: // here no payload 
+            newState.token = newState.user = null;
+        
+            break;
+
+    }
+    return newState;
+}
 //6 - store
+
+export const authstore = createStore(authReducer);
